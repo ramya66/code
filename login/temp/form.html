@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script>
+            function doSignIn() {
+          var user = {
+              username: $("#username").val(),
+              password: $("#password").val()
+          };
+          $.ajax({
+              url: "/login",
+              type: "POST",
+              dataType: 'json',
+              beforeSend: function(xhr) {
+                  xhr.setRequestHeader('Content-type', 'application/json');
+              },
+              success: function(x) {
+                  console.log("Welcome User" +x);
+                 console.log(JSON.stringify(x));
+            },
+              error: function(e) {
+                  console.log("Invalid Username and Password" +e);
+              },
+              data: JSON.stringify(user)
+          });
+      }
+           
+           
+           
+            </script>
+        </head>
+    <body>
+        <h1>login</h1>
+    
+<label for="username">username:</label> 
+<input type="text" name="username" id="username" /><br><br>
+<label for="passid">Password:</label>  
+<input type="password" name="passid" id="password" /><br><br> 
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="submit" name="submit" value="login" onclick="doSignIn()" /></li>
+ 
+    </body>
+    </html>
